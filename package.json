@@ -1,0 +1,37 @@
+{
+  "name": "@endevr-io/wsl-api",
+  "version": "1.0.0",
+  "description": "Node wrapper and utilities for the WSL CLI",
+  "keywords": [
+    "windows",
+    "wsl",
+    "cli",
+    "endevr"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "readme": "jsdoc2md -t README.hbs index.js services/commands/*.js services/utilities/*.js > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endevr-io/wsl-api.git"
+  },
+  "author": "skuIIs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/endevr-io/wsl-api/issues"
+  },
+  "homepage": "https://github.com/endevr-io/wsl-api#readme",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/skuIIs"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^7.1.0",
+    "standard": "^16.0.4"
+  }
+}
