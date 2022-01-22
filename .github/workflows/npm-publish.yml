@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install
-      - run: npm lint
+      - run: npm run lint
 
   publish-npm:
     needs: test

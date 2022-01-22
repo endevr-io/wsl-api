@@ -1,6 +1,6 @@
 {
   "name": "@endevr-io/wsl-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node wrapper and utilities for the WSL CLI",
   "keywords": [
     "windows",
