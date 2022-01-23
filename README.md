@@ -1,4 +1,4 @@
-# @endever-io/wsl-api
+# @endevr-io/wsl-api
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/endevr-io/wsl-api?style=flat-square)
 ![GitHub top language](https://img.shields.io/github/languages/top/endevr-io/wsl-api?style=flat-square)
@@ -13,8 +13,8 @@ Node wrapper and utilities for the WSL CLI. Uses node child_process with no othe
 You can use npm or yarn to install this package into your project
 
 ```bash
-npm install @endever-io/wsl-api
-yarn add @endever-io/wsl-api
+npm install @endevr-io/wsl-api
+yarn add @endevr-io/wsl-api
 ```
 
 ## Functions
