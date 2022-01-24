@@ -2,6 +2,7 @@ const { spawnCommandPromise, execPromise } = require('../child.js')
 
 /**
  * Runs a bash file on the default or specified istribution
+ * > :warning: **Make sure that the file uses Linux line endings (LF) and NOT Windows line endings (CRLF)**
  * @example
  * ```javascript
  * const wsl = require('@endevr-io/wsl-api')
@@ -14,7 +15,7 @@ const { spawnCommandPromise, execPromise } = require('../child.js')
  * }
  * await wsl.runWSLFile('/mnt/c/longprocess.sh', 'Ubuntu', 'endevr', true, callback)
  * ```
- * @param  {String} command  command to run, already is wrapped with ""
+ * @param  {String} path  path to the file in WSL/Linux format, ie `/mnt/c/Path/To/File` or `/home/user/path/to/file`
  * @param  {String|Null} [distribution=null]  option to specify the distribution or use the default distribution
  * @param  {String|Null} [user=null]  option to specify the user or use the default user
  * @param  {Boolean} [longProcess=false]  option if to run a process with a single response or a long running process with callbacks for the response

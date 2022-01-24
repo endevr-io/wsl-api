@@ -2,6 +2,7 @@ const { spawnCommandPromise, execPromise } = require('../child.js')
 
 /**
  * Runs a bash file on the default distribution
+ * > :warning: **Make sure that the file uses Linux line endings (LF) and NOT Windows line endings (CRLF)**
  * @deprecated Microsoft lists this as deprecated and might not work in the future
  * @example
  * ```javascript
@@ -15,7 +16,7 @@ const { spawnCommandPromise, execPromise } = require('../child.js')
  * }
  * await wsl.runBashFile('/mnt/c/longprocess.sh', true, callback)
  * ```
- * @param  {String} command  command to run, already is wrapped with ""
+ * @param  {String} path  path to the file in WSL/Linux format, ie `/mnt/c/Path/To/File` or `/home/user/path/to/file`
  * @param  {Boolean} [longProcess=false]  option if to run a process with a single response or a long running process with callbacks for the response
  * @param  {Function|Boolean} [stdoutCallback=false]  optional callback for the stdout event, returns a buffer
  * @param  {Function|Boolean} [stderrCallback=false]  optional callback for the stderr event, returns a buffer

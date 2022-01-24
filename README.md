@@ -92,14 +92,20 @@ yarn add @endevr-io/wsl-api
 <dt><del><a href="#runBashCommand">runBashCommand(command, [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback])</a> ⇒ <code>Promise</code> | <code>String</code></del></dt>
 <dd><p>Runs a bash command on the default distribution</p>
 </dd>
-<dt><del><a href="#runBashFile">runBashFile(command, [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback])</a> ⇒ <code>Promise</code> | <code>String</code></del></dt>
+<dt><del><a href="#runBashFile">runBashFile(path, [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback])</a> ⇒ <code>Promise</code> | <code>String</code></del></dt>
 <dd><p>Runs a bash file on the default distribution</p>
+<blockquote>
+<p>:warning: <strong>Make sure that the file uses Linux line endings (LF) and NOT Windows line endings (CRLF)</strong></p>
+</blockquote>
 </dd>
 <dt><a href="#runWSLCommand">runWSLCommand(command, [distribution], [user], [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback])</a> ⇒ <code>Promise</code> | <code>String</code></dt>
 <dd><p>Runs a command on the default or specified distribution. Must be a simple single command. Use <code>runBashCommand</code> for multiple or complex commands or run a bash file with <code>runWSLFile</code> or <code>runBashFile</code></p>
 </dd>
-<dt><a href="#runWSLFile">runWSLFile(command, [distribution], [user], [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback])</a> ⇒ <code>Promise</code> | <code>String</code></dt>
+<dt><a href="#runWSLFile">runWSLFile(path, [distribution], [user], [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback])</a> ⇒ <code>Promise</code> | <code>String</code></dt>
 <dd><p>Runs a bash file on the default or specified istribution</p>
+<blockquote>
+<p>:warning: <strong>Make sure that the file uses Linux line endings (LF) and NOT Windows line endings (CRLF)</strong></p>
+</blockquote>
 </dd>
 <dt><a href="#isInstalled">isInstalled(distribution)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Checks if distribution is installed or exists</p>
@@ -589,17 +595,17 @@ Runs a bash command on the default distribution
 ```javascriptconst wsl = require('@endevr-io/wsl-api')const ls = await wsl.runBashCommand('ls')console.log(ls)function callback (data) {  console.log(data.toString())}await wsl.runBashCommand('apt update', true, callback)```
 <a name="runBashFile"></a>
 
-## ~~runBashFile(command, [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback]) ⇒ <code>Promise</code> \| <code>String</code>~~
+## ~~runBashFile(path, [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback]) ⇒ <code>Promise</code> \| <code>String</code>~~
 ***Deprecated***
 
-Runs a bash file on the default distribution
+Runs a bash file on the default distribution> :warning: **Make sure that the file uses Linux line endings (LF) and NOT Windows line endings (CRLF)**
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> \| <code>String</code> - returns promise from spawnBashPromise if longProcess is true or string from execPromise if longProcess is false  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| command | <code>String</code> |  | command to run, already is wrapped with "" |
+| path | <code>String</code> |  | path to the file in WSL/Linux format, ie `/mnt/c/Path/To/File` or `/home/user/path/to/file` |
 | [longProcess] | <code>Boolean</code> | <code>false</code> | option if to run a process with a single response or a long running process with callbacks for the response |
 | [stdoutCallback] | <code>function</code> \| <code>Boolean</code> | <code>false</code> | optional callback for the stdout event, returns a buffer |
 | [stderrCallback] | <code>function</code> \| <code>Boolean</code> | <code>false</code> | optional callback for the stderr event, returns a buffer |
@@ -631,15 +637,15 @@ Runs a command on the default or specified distribution. Must be a simple single
 ```javascriptconst wsl = require('@endevr-io/wsl-api')const ls = await wsl.runWSLCommand('ls', 'Ubuntu', 'endevr')console.log(ls)function callback (data) {  console.log(data.toString())}await wsl.runWSLCommand('apt update', 'Ubuntu', 'endevr', true, callback)```
 <a name="runWSLFile"></a>
 
-## runWSLFile(command, [distribution], [user], [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback]) ⇒ <code>Promise</code> \| <code>String</code>
-Runs a bash file on the default or specified istribution
+## runWSLFile(path, [distribution], [user], [longProcess], [stdoutCallback], [stderrCallback], [errorCallback], [closeCallback]) ⇒ <code>Promise</code> \| <code>String</code>
+Runs a bash file on the default or specified istribution> :warning: **Make sure that the file uses Linux line endings (LF) and NOT Windows line endings (CRLF)**
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> \| <code>String</code> - returns promise from spawnBashPromise if longProcess is true or string from execPromise if longProcess is false  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| command | <code>String</code> |  | command to run, already is wrapped with "" |
+| path | <code>String</code> |  | path to the file in WSL/Linux format, ie `/mnt/c/Path/To/File` or `/home/user/path/to/file` |
 | [distribution] | <code>String</code> \| <code>Null</code> | <code></code> | option to specify the distribution or use the default distribution |
 | [user] | <code>String</code> \| <code>Null</code> | <code></code> | option to specify the user or use the default user |
 | [longProcess] | <code>Boolean</code> | <code>false</code> | option if to run a process with a single response or a long running process with callbacks for the response |
