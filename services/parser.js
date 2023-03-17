@@ -48,7 +48,7 @@ function splitLines (unicode, start = 1) {
  */
 function listOnlineMatches (line) {
   if (typeof line !== 'string') throw new TypeError('parameter line must be string')
-  const regex = /^(?<name>[a-zA-Z0-9-.]+) +(?<friendly>[a-zA-Z0-9-. /]+)/g
+  const regex = /^(?<name>[a-zA-Z0-9-._]+) +(?<friendly>[a-zA-Z0-9-. /]+)/g
   const match = regex.exec(line)
   return { ...match.groups }
 }
@@ -84,7 +84,7 @@ exports.parseListOnline = (response, raw) => {
  */
 function listMatches (line) {
   if (typeof line !== 'string') throw new TypeError('parameter line must be string')
-  const regex = /^(?<name>[a-zA-Z0-9-.]+) *(?<default>[^\s]*)/g
+  const regex = /^(?<name>[a-zA-Z0-9-._]+) *(?<default>[^\s]*)/g
   const match = regex.exec(line)
   match.groups.default = match.groups.default === '(Default)'
   return { ...match.groups }
@@ -123,7 +123,7 @@ exports.parseList = (response, raw) => {
  */
 function listVerboseMatches (line) {
   if (typeof line !== 'string') throw new TypeError('parameter line must be string')
-  const regex = /^(?<default>[ *]{2})(?<name>[a-zA-Z0-9-.]+) +(?<state>[a-zA-Z]+) +(?<version>[a-zA-Z0-9]+)/g
+  const regex = /^(?<default>[ *]{2})(?<name>[a-zA-Z0-9-._]+) +(?<state>[a-zA-Z]+) +(?<version>[a-zA-Z0-9]+)/g
   const match = regex.exec(line)
   match.groups.default = match.groups.default === '* '
   match.groups.version = parseInt(match.groups.version)
